@@ -1,15 +1,16 @@
-s = "rat"
+s = "ratt"
 t = "car"
 
 
 dic = {}
 
 for i in range(len(s)):
-    dic[i] = s[i]
-    print(f"add{s[i]}")
+    if not dic:
+        if s[i] in dic:
+            dic[s[i]] +=1
+        else:
+            dic[s[i]] = 1
 
-    if len(dic) == len(t):
-        print('a')
-        print(t[i] in dic.values())
 
-print('none')
+print(dic)
+        
