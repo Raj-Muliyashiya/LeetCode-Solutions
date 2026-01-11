@@ -1,12 +1,11 @@
-nums = [4,1,-1,2,-1,2,3]
-k = 2
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        dic = {}
 
-dic = {}
+        for i in nums:
+            dic[i] = 1 + dic.get(i,0)
 
-for i in nums:
-    dic[i] = 1 + dic.get(i,0)
+        dic = sorted(dic.items(), key=lambda x:x[1], reverse=True)
 
-
-sort = sorted(dic.items(),key=lambda x: x[1],reverse=True)
-
-print(sort)
+        return [x[0] for x in dic[:k]]
+        
