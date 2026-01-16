@@ -1,26 +1,32 @@
-strs = ['neet', 'code']
+class Solution:
 
-new_strs = ''
+    def encode(self, strs: List[str]) -> str:
+        new_string = ""
 
-for i in strs:
-    new_strs += str(len(i)) +"#"+i
+        for i in strs:
+            new_string += str(len(i))+'#'+i
 
-print(new_strs)
-    
+        return new_string
 
 
-new_list = []
-i = 0
+    def decode(self, s: str) -> List[str]:
+        new_list = []
 
-while i < len(new_strs):
-    j = i
-    while new_strs[j] != '#':
-        j+=1
-    length = int(new_strs[i:j])
-    print(length)
-    i = j+1
-    j = i + length
-    new_list.append(new_strs[i:j])
-    i=j
+        i=0
+        while i < len(s):
+            j=i
+            while s[j] != '#':
+                j+=1
 
-print(new_list)
+            length = int(s[i:j])
+
+            start = j + 1
+            end = start + length
+
+            new_list.append(s[start : end])
+
+            i = end
+
+        return new_list 
+
+
