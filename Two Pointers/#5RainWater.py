@@ -1,32 +1,31 @@
-height = [0,1,0,2,1,0,1,3,2,1,2,1]
-main = 0
-lefty = []
-h = height[0]
-for i in height:
-    if i > h :
-        h = i
-    lefty.append(h)
+class Solution:
+    def trap(self, height: List[int]) -> int:
 
+        bar = 0
 
-print(lefty)
+        lefty = []
+        num1 = height[0]
+        for i in height:
+            if i > num1:
+                num1 = i
+            lefty.append(num1)
 
-righty = []
-h = height[-1]
-for i in range(len(height)-1,-1,-1):
-    if height[i] > h :
-        h = height[i]
-    righty.insert(0,h)
-    
+        righty = []
+        num2 = height[-1]
+        for j in range(len(height)-1,-1,-1):
+            if height[j] > num2:
+                num2 = height[j]
+            righty.append(num2)
 
-print(righty)
+        righty.reverse()
 
-l = 0
-r = len(height)-1
+        l = 0
+        r = len(height)-1
 
-while l < r:
-    main += min(righty[l],lefty[l]) - height[l]
-    
+        while l < r :
+            bar += min(lefty[l],righty[l]) - height[l]
+            l+=1
 
-    l+=1
+        return bar
+            
 
-print(main)
